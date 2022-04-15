@@ -19,11 +19,7 @@ namespace Source.Scripts
 
         private void Start()
         {
-            if (PlayerPrefs.HasKey("LastGame"))
-            {
-                resultBtn.interactable = true;
-                resultText.text = "Вы выиграли за " + PlayerPrefs.GetFloat("LastGame") + " секунд";
-            }
+            SetResult();
         }
 
         public void Play()
@@ -32,8 +28,18 @@ namespace Source.Scripts
             mainMenuPanel.SetActive(false);
         }
 
+        void SetResult()
+        {
+            if (PlayerPrefs.HasKey("LastGame"))
+            {
+                resultBtn.interactable = true;
+                resultText.text = "You won for " + PlayerPrefs.GetFloat("LastGame") + " seconds";
+            }
+        }
+
         void ShowMainMenu()
         {
+            SetResult();
             Signals.Get<MainMenuTransitionSignal>().Dispatch();
             resultPanel.SetActive(false);
             mainMenuPanel.SetActive(true);

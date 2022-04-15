@@ -34,11 +34,11 @@ namespace Source.Scripts
             if (other.gameObject.CompareTag(finishTag))
             {
                 PlayerPrefs.SetFloat("LastGame", (float) Math.Round(gameTime,2));
-                EndGame("Вы выиграли за " + Math.Round(gameTime,2) + " секунд");
+                EndGame("You won for " + Math.Round(gameTime,2) + " seconds");
             }else if (other.gameObject.CompareTag(edgeTag))
             {
                 SetZeroForce();
-                EndGame("Вы проиграли");
+                EndGame("You lose");
             }
         }
     }
